@@ -73,7 +73,7 @@ bookshelf.knex.schema.hasTable('carma').then(function(exists) {
 
             console.log(level + ' carma to ' + target);
 
-            var carma = Carma.forge({'target': target})
+            var carma = Carma.forge({'target': target.toLowerCase()})
                 .fetch()
                 //.catch(function(err) {
                 //    console.log('no carma found for ' + target);
@@ -84,7 +84,7 @@ bookshelf.knex.schema.hasTable('carma').then(function(exists) {
                     {
                         console.log('undefined');
 
-                        Carma.forge({'target': target, 'score': level}).save(null, {method: 'insert'})
+                        Carma.forge({'target': target.toLowerCase(), 'score': level}).save(null, {method: 'insert'})
                             .then(function() {
                                 var p = level > 0 ? '+' : '';
 
